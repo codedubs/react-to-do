@@ -19,19 +19,14 @@ class App extends Component {
     return (
       <div className="App">
         <ul>
-          <ToDo />
-          <ToDo />
           { this.state.todos.map( (todo, index) =>
-            <div>
-            <ToDo key={ index } />
-            <ToDo key={ index } />
-            </div>
-          )}
-        </ul>
-      </div>
-    );
-  }
-}
+            <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } />
+           )}
+         </ul>
+       </div>
+     );
+   }
+ }
 
 
 export default App;
