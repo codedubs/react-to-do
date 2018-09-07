@@ -7,15 +7,16 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-      this.state = {
-        todos: [
-          { description: 'walk the dog', isCompleted: true },
-          { description: 'clean laundry', isCompleted: false },
-          { description: 'read a book', isCompleted: false }
-        ],
-        newTodoDescription: 'kk'
-      };
+    this.state = {
+          todos: [
+            { description: 'Walk the dog', isCompleted: true },
+            { description: 'Do the laundry', isCompleted: false },
+            { description: 'Buy new dishes', isCompleted: false }
+          ],
+          newTodoDescription: ''
+        };
   }
+
 
   handleChange(e) {
     this.setState({ newTodoDescription: e.target.value })
@@ -23,11 +24,11 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if(!this.state.newTodoDescription) { return }
-    const newTodo = { description: newTodoDescription, isCompleted: false };
+    if (!this.state.newTodoDescription) { return }
+    const newTodo = { description: this.state.newTodoDescription, isCompleted: false };
     this.setState({ todos: [...this.state.todos, newTodo], newTodoDescription: '' });
   }
-
+  
   toggleComplete(index) {
     const todos = this.state.todos.slice();
     const todo = todos[index];
@@ -44,7 +45,7 @@ class App extends Component {
            )}
          </ul>
          <form onSubmit={ (e) => this.handleSubmit(e) }>
-            <input type="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) }/>
+            <input type="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) } />
             <input type="submit" />
          </form>
        </div>
